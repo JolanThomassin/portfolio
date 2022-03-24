@@ -113,12 +113,24 @@
                 <br><br>
                 Premièrement, la partie militaire de mon jeu. Cette partie nécessite l'implémentation de plusieurs fenêtres, d'un ajout d'un système de niveau et de puissance sur tous les personnages du jeu. Ainsi qu'un système de combat.
                 <br><br>
-                Deuxièmement, la partie des quêtes et de l'histoire. Je ne veux pas faire une histoire trop détaillée mais j'ai envie que l'utilisateur ressente une progression ou un but lors de son gameplay.
+                Deuxièmement, la partie des quêtes. J'ai envie que l'utilisateur ressente une progression ou un but lors de son gameplay.
                 <br><br>
                 Étant un vieux projet, pour arriver à réaliser cette maintenance je vais devoir modifier beaucoup d'ancien code et j'aimerais si possible avec le niveau que j'ai gagné en 5ans le rendre plus efficace et performant.
               </p>
 
               <br><br>
+
+              <h3> 23 Mars 2022 - Création d'un executable </h3>
+              <p>  Le jeu peut désormais être lancé sur toutes les machines, même celle qui ne possède pas Python. </p>
+
+              <h3> 23 Mars 2022 - Maintenance de système de sauvegarde </h3>
+              <p>  Avec l'ajout du système de quête, nous avons la variable de progression de quête à stocker lors de la sauvegarde du jeu. J'ai donc modifié la fonction de sauvegarde et de chargement de sauvegarde, pour qu'elles accueillent notre nouvelle valeur. </p>
+
+              <h3> 23 Mars 2022 - Correction d'un bug sur la partie militaire </h3>
+              <p> Lors de mes tests j'ai trouvé que lors de la réussite d'une mission militaire, nos manches actuelles n'augmentaient pas de 1 mais de 2. Le bug a été corrigé. </p>
+
+              <h3> 23 Mars 2022 - Création de la fenêtre de quête et ajout des quêtes </h3>
+              <p> Pour la partie quête je vérifis que certaines variables atteignent certaines valeurs, si c'est le cas, alors, le joueur débloquera la prochaine quête. Il y a actuellement 3 quête disponible. </p>
 
               <h3> 19 Mars 2022 - Maintenance de système de sauvegarde </h3>
               <p>  Avec l'ajout du système de niveau sur les personnages et des manches de combat, nous avons de nouvelles variables à stocker lors de la sauvegarde du jeu. J'ai donc modifié la fonction de sauvegarde et de chargement de sauvegarde, pour qu'elles accueillent nos nouvelles valeurs. </p>
@@ -152,7 +164,7 @@
 
               <h3> 17 Mars 2022 - Ajout de divers arguments sur les personnages </h3>
               <p> Les personnages possèdent désormais :
-              <ul>
+                <ul>
                   <li> Un niveau </li>
                   <li> Une puissance </li>
                   <li> Un état (équipé ou non) </li>
@@ -185,12 +197,28 @@
               <h1> Veille technologique </h1>
 
               <p>
-                La vitesse est toujours un facteur important lors de la création d'un nouveau programme. Plus vous pouvez coder un bot et le faire fonctionner rapidement, plus vous serez récompensez par le temps que vous avez passé. Python présente de nombreux avantages que les autres langages de codage n'ont pas, et ceux-ci le rendent idéal pour programmer des bots.
+                Lors de mon cours intitulé "Informatique et Science du Numérique (ISN)" en classe de première, je devais réaliser un projet. La discipline étant des cours de Python, je n'ai pas eu le choix sur le langage utilisé. J'ai décidé pour cette maintenance de ne pas changer le langage du projet pour plusieurs raisons.
                 <br><br>
-                Le flux de travail intégré de Python permet de dépanner les programmes tout en développant votre code du bot. Le cycle édition/test/débogage rend Python fiable et efficace. En raison de son extrême polyvalence et de sa bibliothèque open source, Python pourrait être considéré comme le meilleur langage de programmation  pour la création d'un bot.
-                <br><br>
-                Il est possible de réaliser des bots en Java, mais les bibliothèques sont rares, difficilement utilisables, et non reconnues par Discord developers. En raison de la flexibilité et de la rapidité de Python par rapport à Java, il était plus que logique de le choisir pour la réalisation de ce projet. Je suis également habitué à Python et la majorité des tutoriels que j'ai trouvés lors de mes recherches étaient sur ce langage. Et pour finir, je l'ai choisi pour gagner du temps, et avoir un bot fonctionnel le plus rapidement possible.
+                <ul>
 
+                  <li>
+                    Tout d'abord, ce fut mon premier projet en Python. Je ne possédais pas la rigueur et la compréhension du code que j'ai aujourd'hui. Ceci se ressent dans le code et l'on retrouve beaucoup de ligne qui pourrait être évitée, ainsi qu'une mauvaise nomenclature des variables et des fonctions.
+                    Dans l'ensemble le code est assez brouillon, quand bien même il reste fonctionnel. Malgré mon niveau de l'époque, le code ne comporte aucun bug et fonctionne correctement. Changer de langage m'aurait pris énormément de temps et j'aurais été dans l'obligation de reprendre le code pratiquement de zéro. C'est pour cette raison que j'ai décidé de rester sur du Python.
+                    <br><br>
+                  </li>
+
+                  <li> 
+                    De plus, je ne maitrise pas aussi bien l'interface graphique des autres langages. Pour des raisons de temps, j'ai préféré rester sur le langage que je maitrise le mieux, c'est-à-dire, le Python. Je travaille également sur d'autres projets en Python, et j'ai donc gagné du temps en réalisant des interfaces graphiques réutilisables sur mes autres projets, c'est pour cela que je ne voulais pas changer de bibliothèque graphique (Tkinter), et donc de langage (Tkinter est la bibliothèque graphique utilisée en Python).
+                    <br><br>
+                  </li>
+
+                  <li>
+                    Pour finir, le jeu est assez basique et comporte principalement des If/Else et des vérifications d'appui sur des boutons. Python comme les autres langages, est largement capable de réaliser ces tâches aisément donc le choix du langage utilisé n'aurait pas posé de problèmes.
+                    <br><br>
+                  </li>
+
+                </ul>
+                Pour ces raisons, je n'ai pas envisagé de changer le langage. Au niveau du choix de mes bibliothèques, je n'ai pas eu le choix à l'époque de choisir "Tkinter" et je n'aurais jamais eu le temps de changer de bibliothèque d'interface graphique. Et pour ce qui est du code, j'aurais pu utiliser la bibliothèque "Pygame" car elle facilité beaucoup de choses, comme les animations ou l'utilisation de musique, mais mon projet n'en utilisant pas, j'ai préféré ne pas l'utiliser et me concentrer uniquement sur du Python pour améliorer mon niveau dans le langage.
                 <br><br><br><br>
 
               </p>
