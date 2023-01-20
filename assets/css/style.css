@@ -1,6 +1,11 @@
+@font-face {
+  font-family: 'MyCustomFont'; /* name of the font-family */
+  src: url('./fonts/IBMPlexMono-Regular.otf') format('opentype'); /* path to the font file */
+}
+
 body {
-  background-color: #f5f5f5;
-  color: #4e4e4e;
+  background: linear-gradient(to left, #392A3D, #151A1D); /* this creates a linear gradient from purple to black */
+  font-family: 'MyCustomFont', sans-serif; /* use the custom font for the body */
 }
 
 h1,
@@ -9,11 +14,24 @@ h3,
 h4,
 h5,
 h6 {
-  color: #1e1e1e;
+  color: #ffffff;
+  text-shadow: #e44cee 1px 0 10px;
+}
+
+p {
+  color: #e0d9d9;
+}
+
+ul {
+  color : #fff;
+}
+
+li {
+  color : #fff;
 }
 
 a {
-  color: #1e1e1e;
+  color: #f155fa;
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 }
@@ -42,13 +60,14 @@ a:hover {
 }
 
 .box-shadow, .card-blog, .work-box, .service-box, .paralax-mf {
+  background: radial-gradient(circle at center, #63375B, #392A3D);
   box-shadow: 0 13px 8px -10px rgba(0, 0, 0, 0.1);
-  height: 400px;
+  height: 405px;
 }
 
 .box-shadow-a, .button:hover {
   text-decoration: none;
-  box-shadow: 0 0 0 4px #cde1f8;
+  box-shadow: 0 0 0 4px #ffffff;
 }
 
 .display-5 {
@@ -83,7 +102,7 @@ a:hover {
 }
 
 .overlay-mf {
-  background-color: #0078ff;
+  /* background-color: #0078ff; */
 }
 
 .overlay-mf {
@@ -128,7 +147,7 @@ a:hover {
 /*--/ Title s /--*/
 .title-s {
   font-weight: 600;
-  color: #1e1e1e;
+  color: #bdbdbd;
   font-size: 1.1rem;
 }
 
@@ -146,7 +165,7 @@ a:hover {
 
 .subtitle-a {
   text-decoration: none;
-  color: #4e4e4e;
+  color: #ababab;
 }
 
 .info {
@@ -167,14 +186,13 @@ a:hover {
 }
 
 .title-left {
-  font-size: 2rem;
+  font-size: 2rem;box-shadow-fullaz
   position: relative;
 }
 .title-left:before {
   content: "";
   position: absolute;
   height: 3px;
-  background-color: #0078ff;
   width: 100px;
   bottom: -12px;
 }
@@ -188,10 +206,15 @@ a:hover {
   display: flex;
   padding: 3rem 1.25rem;
   position: relative;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   margin-bottom: 3rem;
   z-index: 2;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border:1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 @media (min-width: 768px) {
   .box-shadow-full {
@@ -213,13 +236,14 @@ a:hover {
   border-radius: 50%;
   line-height: 1.6;
   margin: 0 15px 0 0;
-  box-shadow: 0 0 0 3px #0078ff;
+  box-shadow: 0 0 0 3px #EAB8B9;
   transition: all 500ms ease;
+  color: white;
 }
 .socials .ico-circle:hover {
-  background-color: #0078ff;
+  background-color: #EAB8B9;
   color: #fff;
-  box-shadow: 0 0 0 3px #cde1f8;
+  box-shadow: 0 0 0 3px #ffffff;
   transition: all 500ms ease;
 }
 
@@ -232,9 +256,10 @@ a:hover {
 
 .list-ico {
   line-height: 2;
+  color: white;
 }
 .list-ico span {
-  color: #0078ff;
+  color: #EAB8B9;
   margin-right: 10px;
 }
 
@@ -247,7 +272,7 @@ a:hover {
   line-height: 1.55;
   margin: 0 auto;
   text-align: center;
-  box-shadow: 0 0 0 10px #0078ff;
+  box-shadow: 0 0 0 10px #ffffff;
   display: block;
 }
 
@@ -681,6 +706,7 @@ a:hover {
   color: #fff;
   font-weight: 600;
   font-size: 3rem;
+  text-shadow: #e44cee 1px 0 10px;
 }
 @media (min-width: 768px) {
   .hero .hero-title {
@@ -729,12 +755,19 @@ a:hover {
   color: #fff;
 }
 
+
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
 .about-mf .box-shadow-full {
   padding-top: 4rem;
   padding-bottom: 4rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border:1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 .about-mf .about-img {
   margin-bottom: 2rem;
@@ -767,18 +800,26 @@ a:hover {
 # Services
 --------------------------------------------------------------*/
 .service-box {
-  background-color: #fff;
   padding: 2.5rem 1.3rem;
-  border-radius: 1rem;
   margin-bottom: 3rem;
   text-align: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border:1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 .service-box:hover .ico-circle {
   transition: all 500ms ease;
   color: #fff;
-  background-color: #0078ff;
-  box-shadow: 0 0 0 10px #cde1f8;
+  background-color: #151A1D;
+  box-shadow: 0 0 0 10px #ffffff;
 }
+.ico-circle > svg {
+  fill: #e8beff;
+}
+
 .service-box .service-ico {
   margin-bottom: 1rem;
   color: #1e1e1e;
@@ -800,7 +841,7 @@ a:hover {
   padding: 0.4rem 0;
 }
 .service-box .s-description {
-  color: #4e4e4e;
+  color: #f7dcdd;
 }
 
 /*--------------------------------------------------------------
@@ -841,28 +882,22 @@ a:hover {
   background-color: #fff;
   height: 310px;
 }
-.work-box:hover img {
-  transform: scale(1.3);
-}
 
 .work-img {
   display: block;
   overflow: hidden;
   height: 200px;
 }
-.work-img img {
-  transition: all 1s;
-}
 
 .work-content {
   padding: 2rem 3% 1rem 4%;
 }
 .work-content .w-more {
-  color: #4e4e4e;
+  color: #f486ff;
   font-size: 0.8rem;
 }
 .work-content .w-more .w-ctegory {
-  color: #0078ff;
+  color: #a8f6ff;
 }
 .work-content .w-like {
   font-size: 2.5rem;
@@ -898,14 +933,22 @@ a:hover {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #0078ff;
+  border: 1px solid #fff;
 }
 .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #0078ff;
+  background-color: #e85aff;
 }
 .portfolio-details .portfolio-info {
   padding: 30px;
-  box-shadow: 0px 0 30px rgba(78, 78, 78, 0.08);
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 3rem;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border:1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 .portfolio-details .portfolio-info h3 {
   font-size: 22px;
@@ -918,6 +961,7 @@ a:hover {
   list-style: none;
   padding: 0;
   font-size: 15px;
+  color: white;
 }
 .portfolio-details .portfolio-info ul li + li {
   margin-top: 10px;
@@ -932,6 +976,12 @@ a:hover {
 }
 .portfolio-details .portfolio-description p {
   padding: 0;
+}
+.portfolio-details .portfolio-description-maintenance {
+  margin-left: 30px;
+}
+.portfolio-details .portfolio-description-maintenance p {
+  margin-left: 40px;
 }
 
 /*--------------------------------------------------------------
@@ -1283,7 +1333,7 @@ footer {
   text-align: center;
   color: #fff;
   padding: 25px 0;
-  background: #0062d3;
+  background: linear-gradient(to left, #3F2B56, #000000);
 }
 footer .copyright {
   margin-bottom: 0.3rem;
