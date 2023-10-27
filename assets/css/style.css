@@ -880,13 +880,13 @@ a:hover {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background-color: #fff;
-  height: 310px;
+  height: 19.8rem;
 }
 
 .work-img {
   display: block;
   overflow: hidden;
-  height: 200px;
+  height: 13.5em;
 }
 
 .work-content {
@@ -1371,5 +1371,53 @@ footer .credits a {
 @media (min-width: 768px) {
   .col-md-3 {
       width: 25%; /* Change the width to your desired value (e.g., 25%) */
+  }
+}
+
+@media (min-width: 768px) {
+  .work-img {
+    height: 9.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .work-img {
+    height: 11.8rem;
+  }
+}
+@media (min-width: 1200px) {
+  .work-img {
+    height: 13.13rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .work-box {
+    height: 16.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .work-box {
+    height: 18.8rem;
+  }
+}
+@media (min-width: 1200px) {
+  .work-box {
+    height: 20.13rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .work-content {
+    padding: 0rem 0% 0rem 2%;
+  }
+}
+@media (min-width: 992px) {
+  .work-content {
+    padding: 1rem 3% 1rem 4%;
+  }
+}
+@media (min-width: 1200px) {
+  .work-content {
+    padding: 1rem 3% 1rem 4%;
   }
 }
