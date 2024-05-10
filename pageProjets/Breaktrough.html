@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Jolan Thomassin</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href="../index.html">DevFolio</a></h1>
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <div class="hero hero-single route bg-image" style="background-image: url(../assets/img/overlay-bg-blur.jpg)">
+    <div class="overlay-mf"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <h2 class="hero-title mb-4"> IA pour jeu de plateau </h2>
+            <h1> jeu de breakthrough </h1>
+            <h3> Cours : LOG320 </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            <div class="portfolio-description-maintenance">
+
+              <h3> Information sur le projet </h3>
+              <ul>
+                <li><strong>Catégorie</strong>: Intelligence artificielle </li>
+                  <li><strong>Langage</strong>: Java </li>
+                <li><strong>Participant(s)</strong>: Jolan Thomassin, Manoël Nohra </li>
+                <li><strong>Date du projet</strong>: 2023 </li>
+              </ul>
+
+              <img src="../assets/img/breaktrough.png" alt="">
+              <br><br>
+
+              <section id="breakthrough">
+                <h2> Règles du jeu (Breakthrough) </h2>
+                <p>Breakthrough est un jeu de stratégie de plateau créé par Dan Troyka en 2000. Il gagna le concours du meilleur design de jeu de plateau 8x8, et il a quelques similitudes avec les Dames, mais la stratégie est différente.</p>
+                <p>Le but du jeu est d'atteindre la rangée de départ de l'adversaire, la plus éloignée du joueur. Cela signifie que le joueur blanc doit atteindre la 8e rangée et que le joueur noir doit atteindre la 1ère rangée pour gagner la partie.</p>
+              </section>
+              <br><br>
+
+              <section id="introduction">
+                <h2>Introduction</h2>
+                <p>Je vous présente en détail la conception, l'implémentation et les résultats de mon programme d'intelligence artificielle pour les jeux de plateau. Notre objectif était de créer une IA capable de prendre des décisions informées et efficaces dans un environnement de jeu complexe.</p>
+              </section>
+              <br><br>
+            
+              <section id="alphabeta">
+                <h2>Élagage de Alpha-Beta</h2>
+                <p>L'élagage alpha-beta est une technique utilisée dans les algorithmes de recherche arborescente, tels que Minimax, pour réduire le nombre de nœuds évalués. Il fonctionne en éliminant les branches de l'arbre de recherche qui ne contribuent pas à la décision finale. Cela se fait en utilisant deux valeurs, alpha et bêta, pour suivre les valeurs minimale et maximale respectivement, ce qui permet d'éliminer les branches qui ne peuvent pas améliorer le résultat actuel. Cela permet de réduire considérablement le temps de calcul nécessaire pour trouver la meilleure action à prendre.</p>
+              </section>
+              <br><br>
+
+              <section id="strategies">
+                <h2>Fonction d'Évaluation</h2>
+                <p>Notre fonction d'évaluation est divisée en trois points principaux :</p>
+                <ol>
+                  <li>Calcul du nombre de pièces sur le terrain et attribution de points en fonction du surplus ou du déficit par rapport à l'adversaire.</li>
+                  <li>Attribution de points à chaque case du plateau, avec un bonus de 50% aux cases contenant des pions en sécurité.</li>
+                  <li>Évaluation des positions en tenant compte de critères tels que l'importance stratégique des pièces, leur mobilité, les positions avancées et les menaces directes sur les pièces adverses.</li>
+                </ol>
+                <p>Nous utilisons également une matrice de score de position pour attribuer des points à chaque case du plateau, favorisant une défense solide sur les positions importantes tout en encourageant la progression vers l'avant et le centre. Enfin, nous avons ajouté un bonus de 50% aux pions en sécurité, renforçant ainsi notre stratégie de défense et améliorant le contrôle du terrain de notre programme.</p>
+                <img src="../assets/img/breaktrough-2.png" alt="Matrice de score de position pour les pions noirs." width=auto>
+              </section>
+              <br><br>
+
+              <section id="depth">
+                <h2>Profondeur de l'arbre MinMax et temps de calcul moyen</h2>
+                <p>Notre algorithme MinMax atteint une profondeur de 7 dans l'arbre de recherche, ce qui entraîne souvent des dépassements de temps. À la profondeur 6, quelques dépassements de temps sont rencontrés, mais à la profondeur 5, ils sont rares, indiquant que cette profondeur est plus raisonnable pour obtenir des résultats satisfaisants.</p>
+                <p>La profondeur de l'arbre est statique et ne dépend d'aucun paramètre autre que la valeur de profondeur préalablement attribuée. Cependant, la limite de temps définie a un impact direct sur la profondeur atteinte dans l'arbre de recherche.</p>
+                <p>Le temps moyen requis pour évaluer nos coups est de 4,2 secondes à une profondeur de 5. Nous continuons à rechercher des moyens d'optimiser notre algorithme pour améliorer encore davantage ces performances.</p>
+                <p>Nous avions initialement choisi une profondeur finale de 7, mais après le tournoi, nous envisagerions probablement de l'abaisser à 5 pour garantir une exploration plus complète de l'arbre.</p>
+                <p>Nous avons exploré un choix de profondeur adaptatif en estimant une profondeur différente en fonction du nombre de pions restants en jeu, mais cette approche n'a pas donné les résultats escomptés.</p>
+              </section>
+              <br><br>
+
+              
+
+              <br><br><br><br><br><br><br><br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2024 Jolan Thomassin </p>
+  </footer>
+
+  </main><!-- End #main -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
