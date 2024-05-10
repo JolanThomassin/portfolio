@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Jolan Thomassin</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href="../index.html">DevFolio</a></h1>
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <div class="hero hero-single route bg-image" style="background-image: url(../assets/img/overlay-bg-blur.jpg)">
+    <div class="overlay-mf"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <h2 class="hero-title mb-4"> Laboratoire d'IA de l'ACIA </h2>
+            <h1> Agence canadienne d'inspection des aliments </h1>
+            <h3> Stage de 8 mois </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            <div class="portfolio-description-maintenance">
+
+              <h2>Expérience de Stage à l'ACIA</h2>
+              <br><br>
+
+              <ul>
+                <h3>Formation et Compétences Techniques :</h3>
+                <ul>
+                  <li> Apprentissage de Docker, Azure et de l'API OpenAI.</li>
+                  <li> Utilisation de PyTorch pour la création de modèles d'IA.</li>
+                  <li> Amélioration des compétences en Python.</li>
+                  <li> Maîtrise de la gestion des issues et des PR sur GitHub.</li>
+                </ul>
+              </li>
+              
+              <br><br>
+
+              <h3>Projets Réalisés :</h3>
+              <br>
+                  <ol>
+                    <li>
+                      <h4>Extraction de Contenu HTML vers JSON :</h4>
+                      <p>Objectif : Introduire une fonction qui extrait le contenu de toutes les graines (seeds) dans le contenu HTML et le convertit en format JSON exploitable.</p>
+                      <ul>
+                        <li>Récupérer toutes les pages HTML concernant les graines.</li>
+                        <li>Établir une connexion avec le Chat Azure d'OpenAI.</li>
+                        <li>Demander à ChatGPT de traiter les fichiers et de fournir une sortie JSON.</li>
+                        <li>Transformer les données JSON en un format adapté à la base de données.</li>
+                        <li>Établir une structure de base de données normalisée pour stocker ces données.</li>
+                      </ul>
+                      <p>Liens GitHub : <a href="https://github.com/ai-cfia/ailab-db/pull/21">Transformation de Données</a></p>
+                    </li>
+                    
+                    <br><br>
+
+                    <li>
+                      <h4>Système d'Analyse de Contenu et de Notation pour le Contrôle Qualité en Utilisant OpenAI et Azure :</h4>
+                      <p>Description du Problème : Créer un système complet qui extrait les URL à partir d'un morceau de page Web, utilise l'API OpenAI via Azure pour générer des questions et des réponses pertinentes, et utilise une fonction de recherche pour noter l'exactitude des dix premiers résultats de recherche par rapport aux questions et réponses générées.</p>
+                      <ol>
+                        <li>Extraction des URL : Extraire le morceau en utilisant une requête sur la base de données.</li>
+                        <li>Génération Question-Réponse : Utiliser l'API Azure OpenAI pour générer des questions et des réponses correspondantes en fonction du contenu.</li>
+                        <li>Extraction de Morceau : Mettre en œuvre une méthode pour extraire des morceaux de texte à partir des données collectées.</li>
+                        <li>Jeu de Questions-Réponses Générées : Créer un ensemble de données de paires Question-Réponse à partir des réponses de l'agent conversationnel.</li>
+                      </ol>
+                      <p>Liens GitHub : <a href="https://github.com/ai-cfia/ailab-db/pull/47">Génération de Questions</a></p>
+                    </li>
+                  </ol>
+                </li>
+              </ul>
+              
+              <br><br>
+              <p>J'ai également travaillé en Open Source et j'ai également géré et restructuré les schémas et containers touchant à la base de données.</p>
+              
+              <br><br><br><br><br><br><br><br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main><!-- End #main -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
