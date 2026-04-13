@@ -1,0 +1,187 @@
+
+/* Project detail page */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'IBMPlexMono', monospace; color: #fff;
+  background: #151A1D;
+}
+/* fixed global background layer to avoid visible seams while scrolling */
+.bg {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(130% 120% at 10% -10%, #2b2231 0%, #151A1D 55%) no-repeat fixed;
+}
+
+.header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px; background: rgba(0,0,0,.25); backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.header a { color: #fff; text-decoration: none; padding: 8px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 10px; }
+.header .badge { font-size: 12px; opacity: .85; border-color: rgba(255,255,255,.15); }
+
+/* Single column layout */
+.wrap { 
+  max-width: 1200px; 
+  margin: 24px auto 100px; /* Augmenté de 64px à 100px */
+  padding: 0 18px; 
+  display: grid; 
+  gap: 32px; /* Augmenté de 22px à 32px pour plus d'air entre les sections */
+}
+
+/* MEDIA first */
+.media { display: grid; gap: 14px; }
+.viewer {
+  position: relative; border-radius: 18px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.15);
+  aspect-ratio: 16/9;
+  background: rgba(0,0,0,.4);
+}
+.viewer.is-image { background-size: cover; background-position: center; }
+.viewer video { 
+  width:100%; height:100%; display:block; border:0; object-fit: cover; 
+}
+.viewer iframe { 
+  width:100%; height:100%; display:block; border:0; 
+}
+
+.viewer .open { position:absolute; right:12px; bottom:12px; z-index:3;
+  padding:8px 10px; border-radius:10px; border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.35); color:#fff; text-decoration:none; font-size:12px;
+}
+.thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.thumb {
+  position: relative; border-radius: 12px; overflow:hidden;
+  height: 100px; border:1px solid rgba(255,255,255,.14);
+  background-size: cover; background-position: center; cursor: pointer;
+}
+.thumb.is-video::after { content:"▶"; position:absolute; right:8px; bottom:6px; font-size:16px; opacity:.9; }
+.thumb:focus, .thumb:hover { outline:none; box-shadow: 0 0 0 3px #e85aff inset; }
+
+/* DESCRIPTION full width */
+.card {
+  background: radial-gradient(100% 100% at 0% 0%, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 18px; 
+  padding: 32px 40px; /* Augmenté significativement (était 16px 18px) */
+}
+.meta { display:flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.meta .tag { font-size: 12px; padding: 6px 10px; border:1px solid rgba(255,255,255,.18); border-radius: 999px; }
+.body p { 
+  line-height: 1.8; /* Augmenté de 1.6 à 1.8 */
+  font-size: 16px;
+  opacity: 0.9;
+}
+.cta { display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+.button {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 14px; border-radius:12px; cursor:pointer;
+  border:1px solid rgba(255,255,255,.25); color:#fff; text-decoration:none;
+  background: rgba(255,255,255,.06);
+}
+.button.primary { box-shadow: 0 0 0 3px #e85aff inset; }
+
+/* LARGE GALLERY */
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.gallery .img {
+  border-radius: 14px; overflow:hidden; border:1px solid rgba(255,255,255,.14);
+  background-size: cover; background-position: center;
+  aspect-ratio: 16/10; cursor: zoom-in;
+}
+
+/* LIGHTBOX */
+.lightbox { position: fixed; inset:0; background: rgba(0,0,0,.92); display:none; align-items:center; justify-content:center; z-index: 50; }
+.lightbox.is-open { display:flex; }
+.lightbox .frame { max-width: 92vw; max-height: 88vh; }
+.lightbox img, .lightbox video, .lightbox iframe { width:100%; height:100%; object-fit: contain; display:block; }
+.lightbox .close { position: absolute; top: 16px; right: 16px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.4); border-radius: 10px; cursor: pointer; background: rgba(0,0,0,.6); }
+
+#title {
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.footer-space {
+  height: 30px;
+}
+
+.project-separator {
+  border: none;
+  height: 1px;
+  margin: 28px 0 30px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(232, 90, 255, 0.35),
+    rgba(255, 255, 255, 0.18),
+    rgba(232, 90, 255, 0.35),
+    transparent
+  );
+}
+
+/* --- PALETTE CHROMATIQUE PAR ANNÉE (2018 - 2027) --- */
+
+.project[data-date^="2027"] .date-tag,
+#tags[data-date^="2027"] .date-tag {
+  background: rgba(255, 0, 127, 0.15);
+  color: #ff007f;
+  border-color: rgba(255, 0, 127, 0.4);
+}
+.project[data-date^="2026"] .date-tag,
+#tags[data-date^="2026"] .date-tag {
+  background: rgba(157, 0, 255, 0.15);
+  color: #bc61ff;
+  border-color: rgba(157, 0, 255, 0.4);
+}
+.project[data-date^="2025"] .date-tag,
+#tags[data-date^="2025"] .date-tag {
+  background: rgba(90, 94, 255, 0.15);
+  color: #8c90ff;
+  border-color: rgba(90, 94, 255, 0.4);
+}
+.project[data-date^="2024"] .date-tag,
+#tags[data-date^="2024"] .date-tag {
+  background: rgba(0, 212, 255, 0.15);
+  color: #00d4ff;
+  border-color: rgba(0, 212, 255, 0.4);
+}
+.project[data-date^="2023"] .date-tag,
+#tags[data-date^="2023"] .date-tag {
+  background: rgba(0, 255, 157, 0.12);
+  color: #00ffa2;
+  border-color: rgba(0, 255, 157, 0.3);
+}
+.project[data-date^="2022"] .date-tag,
+#tags[data-date^="2022"] .date-tag {
+  background: rgba(238, 255, 0, 0.1);
+  color: #e6ff00;
+  border-color: rgba(238, 255, 0, 0.3);
+}
+.project[data-date^="2021"] .date-tag,
+#tags[data-date^="2021"] .date-tag {
+  background: rgba(255, 132, 0, 0.12);
+  color: #ff9100;
+  border-color: rgba(255, 132, 0, 0.3);
+}
+.project[data-date^="2020"] .date-tag,
+#tags[data-date^="2020"] .date-tag {
+  background: rgba(255, 68, 68, 0.12);
+  color: #ff5555;
+  border-color: rgba(255, 68, 68, 0.3);
+}
+.project[data-date^="2019"] .date-tag,
+#tags[data-date^="2019"] .date-tag {
+  background: rgba(255, 157, 194, 0.1);
+  color: #ff9dc2;
+  border-color: rgba(255, 157, 194, 0.3);
+}
+.project[data-date^="2018"] .date-tag,
+#tags[data-date^="2018"] .date-tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: #d1d1d1;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 900px) { .gallery { grid-template-columns: 1fr; } }

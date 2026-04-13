@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects [Jolan Thomassin]</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBMPlexMono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="projects.css" />
+</head>
+<body>
+  <div class="screen">
+    <section class="layout">
+      <!-- FILTER TILE (fixed in place) -->
+      <aside class="tile tile--filters">
+        <header class="filters__header">
+          <div class="back-wrapper"><a href="index.html#projects-cta" class="back-internal">← Home</a></div>
+            <h1>Projects</h1>
+        </header>
+        <nav class="filters__list">
+          <button class="chip is-active" data-filter="favorite">
+            <span class="chip__label">Favorite</span>
+            <span class="chip__count">8</span>
+          </button>
+<button class="chip" data-filter="all">
+            <span class="chip__label">All</span>
+            <span class="chip__count">15</span>
+          </button>
+          <button class="chip" data-filter="internship">
+            <span class="chip__label">Internship</span>
+            <span class="chip__count">3</span>
+          </button>
+          <button class="chip" data-filter="game">
+            <span class="chip__label">Video Game</span>
+            <span class="chip__count">8</span>
+          </button>
+          <button class="chip" data-filter="contest">
+            <span class="chip__label">Contest</span>
+            <span class="chip__count">3</span>
+          </button>
+          <button class="chip" data-filter="ai">
+            <span class="chip__label">Artificial Intelligence</span>
+            <span class="chip__count">3</span>
+          </button>
+          <button class="chip" data-filter="bot">
+            <span class="chip__label">Bot</span>
+            <span class="chip__count">4</span>
+          </button>
+        </nav>
+        <footer class="filters__footer">
+          <p>Jolan Thomassin</p>
+        </footer>
+      </aside>
+
+      <!-- PROJECTS SCROLL PANE (3x2 squares area that can scroll internally) --><div id="tiles" class="tiles" data-filter="favorite">
+<!-- Repeat as many project tiles as you want -->
+
+        <article class="tile project" data-cat="game contest favorite" data-date="2023-05-21">
+        <div class="project__media" style="background-image: url('../assets/img/ThePlague-02.png');"></div>
+        <a class="project__link" href="project.html?slug=the-plague"></a>
+        <div class="project__meta">
+          <h3>The Plague</h3>
+          <span class="tag">Game Jam · Video Game</span>
+          <span class="tag date-tag">April 2023</span> 
+        </div>
+
+        <article class="tile project" data-cat="game favorite" data-date="2023-05-17">
+        <div class="project__media" style="background-image: url('../assets/img/Lunarcana-min.png');"></div>
+        <a class="project__link" href="project.html?slug=lunarcana"></a>
+        <div class="project__meta">
+          <h3>Luna'rcana Awakenings</h3>
+          <span class="tag">Video Game</span>
+          <span class="tag date-tag">May 2023</span> 
+        </div>
+
+        <article class="tile project" data-cat="game contest favorite" data-date="2026-04-07">
+        <div class="project__media" style="background-image: url('../assets/img/ComicCity-01.png');"></div>
+        <a class="project__link" href="project.html?slug=comic-city"></a>
+        <div class="project__meta">
+          <h3>PANIC ON COMIC-CITY!</h3>
+          <span class="tag">Ubisoft Contest · Video Game</span>
+          <span class="tag date-tag">April 2026</span> 
+        </div>
+
+        <article class="tile project" data-cat="internship favorite" data-date="2025-12-22">
+        <div class="project__media" style="background-image: url('../assets/img/ubisoft-01.jpg');"></div>
+        <a class="project__link" href="project.html?slug=ubisoft"></a>
+        <div class="project__meta">
+          <h3>Ubisoft</h3>
+          <span class="tag">Internship · 4 months</span>
+          <span class="tag date-tag">2025</span> 
+        </div>
+
+        <article class="tile project" data-cat="internship favorite" data-date="2025-04-27">
+        <div class="project__media" style="background-image: url('../assets/img/ludia-01.png');"></div>
+        <a class="project__link" href="project.html?slug=ludia"></a>
+        <div class="project__meta">
+          <h3>Ludia</h3>
+          <span class="tag">Internship · 4 months</span>
+          <span class="tag date-tag">2025</span> 
+        </div>
+
+        <article class="tile project" data-cat="internship ai" data-date="2023-08-27">
+        <div class="project__media" style="background-image: url('../assets/img/cfia-01.png');"></div>
+        <a class="project__link" href="project.html?slug=cfia"></a>
+        <div class="project__meta">
+          <h3>IA Laboratory: Canadian Food Inspection Agency</h3>
+          <span class="tag">Internship · 8 months</span>
+          <span class="tag date-tag">2023</span> 
+        </div>
+
+        <article class="tile project" data-cat="ai" data-date="2023-05-22">
+        <div class="project__media" style="background-image: url('../assets/img/breaktrough.png');"></div>
+        <a class="project__link" href="project.html?slug=breaktrough"></a>
+        <div class="project__meta">
+          <h3>AI for Board Game</h3>
+          <span class="tag">Artificial Intelligence</span>
+          <span class="tag date-tag">2023</span> 
+        </div>
+
+        <article class="tile project" data-cat="game bot" data-date="2022-12-30">
+        <div class="project__media" style="background-image: url('../assets/img/PixelKorp-04.jpg');"></div>
+        <a class="project__link" href="project.html?slug=pixelkorp"></a>
+        <div class="project__meta">
+          <h3>Pixelkorp</h3>
+          <span class="tag">Python · SQLite · Game</span>
+          <span class="tag date-tag">2022</span> 
+        </div>
+
+        <article class="tile project" data-cat="game" data-date="2022-11-30">
+        <div class="project__media" style="background-image: url('../assets/img/AloneZero-min.png');"></div>
+        <a class="project__link" href="project.html?slug=alonenozero"></a>
+        <div class="project__meta">
+          <h3>Alone no Zero</h3>
+          <span class="tag">Video Game</span>
+          <span class="tag date-tag">2022</span> 
+        </div>
+
+        <article class="tile project" data-cat="game" data-date="2022-10-30">
+        <div class="project__media" style="background-image: url('../assets/img/VR-01.jpg');"></div>
+        <a class="project__link" href="project.html?slug=pioupiou"></a>
+        <div class="project__meta">
+          <h3>Piou-Piou VR (ultimate edition)</h3>
+          <span class="tag">Video Game</span>
+          <span class="tag date-tag">2022</span> 
+        </div>
+
+        <article class="tile project" data-cat="ai bot favorite" data-date="2022-09-30">
+        <div class="project__media" style="background-image: url('../assets/img/deep-min.png');"></div>
+        <a class="project__link" href="project.html?slug=deep"></a>
+        <div class="project__meta">
+          <h3>Deep - AI assistant</h3>
+          <span class="tag">AI · Chatbot · Python</span>
+          <span class="tag date-tag">2022</span> 
+        </div>
+
+        <article class="tile project" data-cat="game favorite" data-date="2026-01-05">
+        <div class="project__media" style="background-image: url('../assets/img/PocketPlatoon-min.png');"></div>
+        <a class="project__link" href="project.html?slug=pocket"></a>
+        <div class="project__meta">
+          <h3>Pocket Platoons</h3>
+          <span class="tag">Video Game</span>
+          <span class="tag date-tag">January 2026</span> 
+        </div>
+
+        <article class="tile project" data-cat="bot" data-date="2022-12-24">
+        <div class="project__media" style="background-image: url('../assets/img/cocktailUn.jpg');"></div>
+        <a class="project__link" href="project.html?slug=cocktail"></a>
+        <div class="project__meta">
+          <h3>Cokctail Machine</h3>
+          <span class="tag">Bot</span>
+          <span class="tag date-tag">May 2022</span> 
+        </div>
+
+        <article class="tile project" data-cat="game favorite" data-date="2018-09-30">
+        <div class="project__media" style="background-image: url('../assets/img/Kurikku-05.png');"></div>
+        <a class="project__link" href="project.html?slug=kurikku"></a>
+        <div class="project__meta">
+          <h3>Kurikku Nanoko</h3>
+          <span class="tag">Video Game</span>
+          <span class="tag date-tag">2018</span> 
+        </div>
+
+        <article class="tile project" data-cat="contest bot" data-date="2020-05-30">
+        <div class="project__media" style="background-image: url('../assets/img/Roborave-01.jpg');"></div>
+        <a class="project__link" href="project.html?slug=roborave"></a>
+        <div class="project__meta">
+          <h3>Robotics Contest RoboRAVE</h3>
+          <span class="tag">Contest · Robotics</span>
+          <span class="tag date-tag">May 2019</span> 
+        </div>
+
+        </article>
+
+      </div>
+    </section>
+  </div>
+
+  <script>
+  // 1. Sélection des éléments
+  const tilesContainer = document.getElementById('tiles');
+  const chips = document.querySelectorAll('.chip');
+
+  // 2. Fonction de tri par date
+  function sortProjects() {
+    const projects = Array.from(tilesContainer.querySelectorAll('.project'));
+    
+    projects.sort((a, b) => {
+      // On récupère la date dans l'attribut data-date de chaque <article>
+      const dateA = new Date(a.dataset.date || '1970-01-01');
+      const dateB = new Date(b.dataset.date || '1970-01-01');
+      return dateB - dateA; // Du plus récent au plus ancien
+    });
+
+    // On ré-insère les éléments triés dans le conteneur
+    projects.forEach(project => tilesContainer.appendChild(project));
+  }
+
+  // 3. Logique de filtrage (votre code existant)
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    const f = chip.dataset.filter;
+    tilesContainer.setAttribute('data-filter', f);
+    chips.forEach(c => c.classList.toggle('is-active', c === chip));
+    tilesContainer.scrollTo({ top: 0, behavior: 'smooth' });
+  }));
+
+  // 4. Exécution au chargement
+  window.addEventListener('DOMContentLoaded', () => {
+    sortProjects(); // Trie les projets dès que la page est prête
+  });
+</script>
+</body>
+</html>

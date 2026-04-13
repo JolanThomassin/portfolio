@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Details [Jolan Thomassin]</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBMPlexMono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <div class="bg"></div>
+  <header class="header">
+    <a href="projects.html">←</a>
+    <span class="badge">Project</span>
+    <div id="crumb"></div>
+  </header>
+
+  <main class="wrap">
+    <!-- 1) MEDIA SELECTOR FIRST (video + photos) -->
+    <section class="media">
+      <div id="viewer" class="viewer is-image">
+        <a class="open" href="#" id="openFull">Open</a>
+      </div>
+      <div id="thumbs" class="thumbs"></div>
+    </section>
+
+    <!-- 2) DESCRIPTION LARGE -->
+    <section class="card" id="about">
+      <h3 id="title">Untitled</h3>
+      <div class="meta" id="tags"></div>
+      <div class="body" id="desc"></div>
+      <div class="cta" id="ctaContainer"></div>
+    </section>
+
+    <!-- 3) GALLERY (grandes images) -->
+    <section class="card" id="galleryCard" style="display:none;">
+      <h3>Galerie</h3>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <div class="footer-space"></div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <div class="frame" id="lightboxFrame"></div>
+    <button class="close" id="closeLightbox">Close</button>
+  </div>
+
+  <script>
+  const DATA = {
+  "the-plague": {
+    title: "The Plague",
+    subtitle: "Montréal Game Jam 2023",
+    date: "2023-04-28",
+    dateDisplay: "April 2023",
+    tags: ["Game Jam", "Unity", "Horror"],
+    desc: `
+      <p><strong>Embody the plague. Defy medicine.</strong></p>
+      
+      <p>Developed in just 48 hours for the <strong>Montreal Game Jam 2023</strong> (hosted by ÉTS Conjure in collaboration with Ubisoft), <em>The Plague</em> offers a dark, inverted take on a major historical turning point.</p>
+
+      <p>Step into the role of the Black Death itself. Your mission is simple but ruthless: conquer the medieval world. Unfortunately, a cunning doctor stands in your way, desperately seeking a cure. Use your unique abilities to hunt him down relentlessly across the countryside.</p>
+
+      <p><strong>The Objective:</strong> Defeat the doctor before he successfully brews a remedy using the life flowers scattered throughout the land. But stay sharp—this healer is resourceful and has plenty of tricks up his sleeve to protect the peasants and halt your progress.</p>
+    `,
+    links: [
+      { label: "Play on Itch.io", url: "https://manoelnohra.itch.io/the-plague", primary: true }
+    ],
+    // On utilise 'video' pour profiter de la fonction de formatage automatique toEmbed
+    video: "https://www.youtube.com/watch?v=fUNbFeSLqrg", 
+    videoThumb: "../assets/img/ThePlague-02.png",
+    gallery: [
+      "../assets/img/ThePlague-04.png",
+      "../assets/img/ThePlague-02.png",
+      "../assets/img/ThePlague-01.png",
+      "../assets/img/ThePlague-05.png",
+      "../assets/img/ThePlague-03.png"
+    ]
+  },
+
+  "lunarcana": {
+    title: "Lunarcana",
+    subtitle: "Arcade-Action Gacha Game",
+    date: "2023-05-21",
+    dateDisplay: "May 2023",
+    tags: ["Unity", "C#", "UI Design", "Gacha"],
+    desc: `
+      <p><strong>Master the moon's secrets in a high-octane arcade experience.</strong></p>
+      
+      <p><em>Lunarcana</em> is an action-driven project focusing on the intersection of tight gameplay mechanics and a striking <strong>1990s comic book aesthetic</strong>. Developed with Unity, the game emphasizes dynamic movement and tactile feedback.</p>
+
+      <p>Taking inspiration from retro graphic novels, the interface utilizes halftone textures and high-contrast layouts to immerse the player in a living comic book. Every hit, dash, and ability is emphasized by visual onomatopoeia and a reactive soundscape integrated via <strong>Wwise</strong>.</p>
+
+      <p><strong>Key Features:</strong> Experience a unique dual-character system, fluid physics-based movement, and a custom-built UI framework designed to mimic the pacing of a graphic action sequence. Explore a world where every frame tells a story.</p>
+    `,
+    links: [
+      { label: "Project Page", url: "https://github.com/JolanThomassin/Lunarcana-Awakenings", primary: true },
+      { label: "Character Page", url: "https://jolanthomassin.github.io/Lunarcana_website/"},
+      { label: "Review Form", url: "https://docs.google.com/forms/d/e/1FAIpQLScklcOxucLIH44z7VLSZvTgxXRupbYdd8jN7lhDIvgVpEQTdQ/viewform"}
+    ],
+    gallery: [
+      "../assets/img/Lunarcana_03.png",
+      "../assets/img/Lunarcana_02.png",
+      "../assets/img/Lunarcana_01.png",
+      "../assets/img/Lunarcana_04.png",
+      "../assets/img/Lunarcana_05.png"
+    ]
+  },
+
+  "comic-city": {
+    title: "PANIC ON COMIC-CITY!",
+    subtitle: "Ubisoft Contest 2026, Graduation Project",
+    date: "2026-04-07",
+    dateDisplay: "May 2026",
+    tags: ["Ubisoft Contest", "Unity", "Arcade", "Endless"],
+    desc: `
+    <p>Your former research colleague has betrayed you, seizing control of your robots to take over Comic-City. How could you just stand by?</p>
+
+      <p>Panic in Comic-City is an asymmetric cooperative game. Play as Dr. Sam or her loyal robot, S.N.A.K.E., as you dodge your now-hostile drones. Collect propaganda flyers and chain together tricks to rack up a high score!</p>
+
+      <hr class="project-separator">
+
+      <h3> Ubisoft Contest 2026 </h3>
+      <p>The students’ objective is to develop, over the course of 10 weeks, playable video game prototypes that meet the theme, brief, and constraints provided by a jury made up of Ubisoft professionals. Teams may be multidisciplinary, interfaculty, or interuniversity in order to cover all the roles needed to complete their projects. Each team can rely on the support of two mentors from Ubisoft studios in Montreal, Quebec City, Saguenay, and Sherbrooke.</p>
+
+      <p>At the end of the competition, the jury recognizes the work of teams in different categories, and $55,000 is awarded to the winners in the form of scholarships.</p>
+      
+      
+      `,
+    links: [
+      { label: "Itch.io", url: "https://manoelnohra.itch.io/panic-on-comic-city", primary: true },
+      { label: "Youtube Playlist Showing Game Evolution", url: "https://www.youtube.com/playlist?list=PLiKKgiUVXu_iwL84DMZGxfqVFRRs7O1zD"},
+      { label: "Ubisoft Contest 2026", url: "https://montreal.ubisoft.com/fr/nos-engagements/education/concours-universitaire/"}
+    ],
+    // On utilise 'video' pour profiter de la fonction de formatage automatique toEmbed
+    video: "https://www.youtube.com/embed/GbBVbziWulU", 
+    videoThumb: "../assets/img/ComicCity-02.png",
+    gallery: [
+      "../assets/img/ComicCity-01.png",
+      "../assets/img/ComicCity-03.png",
+      "../assets/img/ComicCity-04.png",
+      "../assets/img/ComicCity-05.png",
+      "../assets/img/ComicCity-06.png"
+    ]
+  },
+
+  "ludia": {
+    title: "Ludia",
+    subtitle: "Jurasic World Alive",
+    date: "2025-04-27",
+    dateDisplay: "4 month",
+    tags: ["Internship", "Unity", "Mobile"],
+    desc: `
+        · Participated in the development of a mobile game using Unity (C#). <br>
+        · Implemented interactive and optimized gameplay mechanics. <br>
+        · Collaborated with the art team for the integration of visual elements. <br>
+        · Fixed bugs and improved game performance on mobile platforms. <br>
+        · Used Git and Perforce for version control and collaborative work. <br>
+    `,
+    links: [
+      { label: "Ludia", url: "https://www.ludia.com/fr", primary: true },
+      { label: "Jurassic World Alive", url: "https://jurassicworldalive.com", primary: true }
+    ],
+    gallery: [
+      "../assets/img/ludia-02.png"
+    ]
+  },
+
+  "ubisoft": {
+    title: "Ubisoft",
+    subtitle: "Rainbow Six Mobile",
+    date: "2025-12-22",
+    dateDisplay: "4 month",
+    tags: ["Internship", "Unity", "Mobile"],
+    desc: `
+      · Implemented a performance-based ad caching system to preload ads, reducing loading times from about 5 seconds to nearly instant. <br>
+      · Resolved several UI issues, including softlock problems on pages involving 3D models. <br>
+      · Improved the cheat menu to streamline debugging and make development workflows easier. <br>
+      · Fixed localization issues across multiple areas of the project. <br>
+      · Contributed to a wide range of additional bug fixes and general improvements. <br>
+    `,
+    links: [
+      { label: "Ubisoft", url: "https://www.ubisoft.com/fr-ca", primary: true },
+      { label: "Rainbow Six Mobile", url: "https://www.ubisoft.com/en-ca/game/rainbow-six/mobile", primary: true }
+    ],
+    gallery: [
+      "../assets/img/ubisoft-02.jpg"
+    ]
+  },
+
+  "cfia": {
+    title: "AI Laboratory: CFIA",
+    subtitle: "Canadian Food Inspection Agency",
+    date: "2023-08-27",
+    dateDisplay: "8 month",
+    tags: ["Internship", "AI", "Database"],
+    desc: `
+      · ETL Tool for processing complex data. <br>
+      · Content Analysis and Rating System for Quality Control using OpenAI and Azure. <br>
+      · Learning Docker, Azure, and the OpenAI API. <br>
+      · Utilizing PyTorch for AI model creation. <br>
+      · Enhanced Python skills. <br>
+      · Proficient in issue and PR management on GitHub. <br>
+    `,
+    links: [
+      { label: "CFIA", url: "https://inspection.canada.ca", primary: true }
+    ],
+    gallery: [
+      "../assets/img/cfia-01.png"
+    ]
+  },
+
+  "breaktrough": {
+    title: "Breakthrough AI",
+    subtitle: "Course: LOG320",
+    date: "2023-05-22",
+    dateDisplay: "2023",
+    tags: ["AI"],
+    desc: `
+      <section id="breakthrough">
+              <h2>Game Rules (Breakthrough)</h2>
+              <p>Breakthrough is a strategy board game created by Dan Troyka in 2000. It won the 8x8 Best Board Game Design Contest and has some similarities to Checkers, but the strategy is different.</p>
+              <p>The objective of the game is to reach the opponent's starting row, which is farthest from the player. This means the white player must reach the 8th row, while the black player must reach the 1st row to win the game.</p>
+            </section>
+            <br>
+
+            <section id="introduction">
+              <h2>Introduction</h2>
+              <p>I present in detail the design, implementation, and results of my artificial intelligence program for board games. Our goal was to create an AI capable of making informed and effective decisions in a complex game environment.</p>
+            </section>
+            <br>
+
+            <section id="alphabeta">
+              <h2>Alpha-Beta Pruning</h2>
+              <p>Alpha-beta pruning is a technique used in tree search algorithms, such as Minimax, to reduce the number of nodes evaluated. It works by eliminating branches of the search tree that do not contribute to the final decision. This is done using two values, alpha and beta, to track the minimum and maximum values respectively, allowing branches that cannot improve the current outcome to be eliminated. This significantly reduces the computation time needed to find the best action to take.</p>
+            </section>
+            <br>
+
+            <section id="strategies">
+              <h2>Evaluation Function</h2>
+              <p>Our evaluation function is divided into three main points:</p>
+              <ol>
+                <li>Calculating the number of pieces on the board and assigning points based on the surplus or deficit compared to the opponent.</li>
+                <li>Assigning points to each square on the board, with a 50% bonus for squares containing secure pawns.</li>
+                <li>Evaluating positions based on criteria such as the strategic importance of pieces, their mobility, advanced positions, and direct threats to opposing pieces.</li>
+              </ol>
+              <p>We also use a position score matrix to assign points to each square on the board, favoring solid defense on important positions while encouraging advancement toward the front and center. Finally, we added a 50% bonus for secure pawns, further strengthening our defensive strategy and improving our program's control of the board.</p>
+              <img src="../assets/img/breaktrough-2.png" alt="Position score matrix for black pawns." width=auto>
+            </section>
+    `,
+    links: [
+    ],
+    gallery: [
+      "../assets/img/breaktrough.png",
+      "../assets/img/breaktrough-2.png",
+      "../assets/img/breaktrough-min.png"
+    ]
+  },
+
+  "pixelkorp": {
+    title: "PixelKorp",
+    subtitle: "A buying and collecting game on Discord",
+    date: "2022-12-30",
+    dateDisplay: "2022",
+    tags: ["Discord", "Bot", "Game"],
+    desc: `
+      The main goal of this project was to help me learn SQLite, a library written in C that provides a relational database engine accessible through SQL and directly embedded into a program, without requiring a connection to an online database.
+      <br><br>
+      Thanks to the money generation feature, which you can use once per day, you will be able to join the PixelKorp company! For €50, you can create a character however you like by changing its name, image, or value. Your character will then enter the server ranking at a higher or lower position depending on its value. To increase that value, you can invest money from your savings into it.
+      <br><br>
+      Your goal is to own the most expensive characters on the server, but be careful: other participants can buy your characters back for double their price! Protect your characters or attack those of others. What will your choice be in this magnificent company that is PixelKorp?
+      <br><br>
+      For more information, I invite you to check the GitHub repository.
+    `,
+    links: [
+      { label: "GitHub", url: "https://github.com/JolanThomassin/PixelKorp", primary: true }
+    ],
+    gallery: [
+      "../assets/img/PixelKorp-01.jpg",
+      "../assets/img/PixelKorp-02.jpg",
+      "../assets/img/PixelKorp-03.jpg",
+      "../assets/img/PixelKorp-04.jpg",
+      "../assets/img/PixelKorp-05.jpg"
+    ]
+  },
+
+  "alonenozero": {
+    title: "Alone no Zero",
+    subtitle: "Metroidvania with Unity",
+    date: "2022-11-30",
+    dateDisplay: "2022",
+    tags: ["Game"],
+    desc: `
+      The game features different interconnected areas that the player can explore, though some parts are inaccessible at first, blocked by doors or restricted passages. The player can only reach them after gaining the necessary skills, such as dashing, double jumping, climbing, or other special abilities. The upgrades the player can obtain also help in their quest by allowing them to face tougher enemies and discover shortcuts or secret areas, often requiring them to backtrack.
+      <br><br>
+      The purpose of this design is to encourage the player to grow attached to the character, fully immerse themselves in their journey, and feel their progression alongside them. The game is mainly a platformer and puzzle game, but it also includes some boss fight sequences.
+      <br><br>
+      This is a personal project, and also my first game in C#, which allows me to learn the language.
+    `,
+    links: [
+      { label: "GitHub", url: "https://github.com/JolanThomassin/AloneNoZero", primary: true }
+    ],
+    gallery: [
+      "../assets/img/AloneZero-01.png",
+      "../assets/img/AloneZero-02.png",
+      "../assets/img/AloneZero-03.png"
+    ]
+  },
+
+  "pioupiou": {
+    title: "Piou-Piou VR (ultimate edition)",
+    subtitle: "The best VR FPS shooter of all time!",
+    date: "2022-10-30",
+    dateDisplay: "2022",
+    tags: ["Game", "VR"],
+    desc: `
+      We decided to create a virtual reality first-person shooter. The game’s temporary title is Piou-Piou VR Ultimate Edition and it takes place in a futuristic setting. The player starts with an assault rifle and, throughout the adventure, collects various upgrades. For example, the rifle can fire explosive projectiles or transform into a shotgun. This weapon allows the player to eliminate the enemies trying to kill them.
+      <br><br>
+      The game tells the story of a tragedy: terrorists have kidnapped your best friend, Piou-Piou the duck. Your goal is to eliminate the terrorists in your path and save Piou-Piou.
+    `,
+    links: [
+      { label: "GitHub", url: "https://github.com/JolanThomassin/Projet_vr_equipe_10", primary: true }
+    ],
+    gallery: [
+      "../assets/img/VR-01.jpg"
+    ]
+  },
+
+  "deep": {
+    title: "Deep",
+    subtitle: "Python Chatbot (Artificial Intelligence)",
+    date: "2023-04-28",
+    dateDisplay: "April 2023",
+    tags: ["AI", "Assistant", "Bot", "Python"],
+    desc: `
+      <h3>Project Description</h3>
+      <p>
+        This is a chatbot built in Python using artificial intelligence to respond to user needs,
+        such as web requests, or simply to chat with them.
+      </p>
+
+      <p>
+        The bot is still under development, but its abilities are improving very quickly.
+        It is currently able to perform YouTube searches, check the weather, and send the link
+        to its GitHub repository.
+      </p>
+
+      <p>
+        Conversations with it are still a bit difficult, but with more training it will be able
+        to answer increasingly complex questions. As you can see in the second image, I had to
+        reset its memory many times because it was blindly learning the sentences I told it
+        without really understanding them.
+      </p>
+
+      <h3>IT Maintenance</h3>
+      <p>
+        For this maintenance phase, I decided to add various conversation topics to the bot.
+        I also took the opportunity to fix a bug that had been present since I added the graphical
+        interface. I also updated the README to reflect the bot’s capabilities.
+      </p>
+
+      <h4>February 23, 2022 – Display bug fix</h4>
+      <p>
+        For long texts sent by the user, or links sent by the bot, the text would go beyond the
+        chat window. The solution was to reduce the font size for texts longer than 62 characters.
+      </p>
+
+      <h4>February 22, 2022 – Added conversation topics</h4>
+      <p>The bot can now have conversations on a wider variety of topics.</p>
+      <ul>
+        <li>Topic: Introduction</li>
+        <li>Topic: Hobbies</li>
+        <li>Topic: Passions</li>
+        <li>Topic: Humor / Jokes</li>
+      </ul>
+
+      <h4>February 14, 2022 – Second bot memory reset</h4>
+      <p>
+        The bot had remembered incoherent things after the YouTube search feature was added.
+      </p>
+
+      <h4>February 14, 2022 – Code improvement</h4>
+      <p>
+        All functions and variables are now in English, and the code has been better commented.
+      </p>
+
+      <h4>February 11, 2022 – Second web request feature</h4>
+      <p>
+        The bot can now perform YouTube searches and send them to the user.
+      </p>
+
+      <h4>February 11, 2022 – Added a training list</h4>
+      <p>
+        The bot now has a list of conversations it can repeat in order to learn them.
+      </p>
+
+      <h4>February 8, 2022 – Added the bot’s graphical interface</h4>
+      <p>
+        Until then, the bot only worked through the command prompt. It now has a graphical
+        interface coded using the Tkinter library in Python.
+      </p>
+
+      <h4>February 8, 2022 – First bot memory reset</h4>
+      <p>
+        The bot had learned incorrect things or things that were no longer useful.
+      </p>
+
+      <h4>February 8, 2022 – First web request</h4>
+      <p>
+        The bot can now provide the weather when the user asks, thanks to a web request.
+      </p>
+
+      <h4>February 2, 2022 – First version of the bot</h4>
+      <p>
+        The bot is able to answer the first questions it is asked.
+      </p>
+
+      <h4>January 26, 2022 – Start of analysis phase</h4>
+      <p>
+        Beginning of research and creation of analysis documents.
+      </p>
+
+      <h3>Technology Watch</h3>
+      <p>
+        For this project, I decided to use Python instead of Java because I am very comfortable
+        with this language, and I already knew that the project would be feasible in Python.
+        In addition, Python is known for being one of the best options for creating artificial
+        intelligence because of its computing efficiency. It is also the language with the largest
+        number of libraries related to deep learning.
+      </p>
+
+      <p>
+        I was also familiar with the two main graphical interface libraries in Java and Python,
+        and I feel much more comfortable with Tkinter, the Python one, because I have used it
+        many times.
+      </p>
+
+      <p>There are still possibilities in Java with libraries such as:</p>
+      <ul>
+        <li>d3web</li>
+        <li>Tweety</li>
+        <li>Deeplearning4j</li>
+      </ul>
+
+      <p>
+        Both options were free and open-source, with hundreds of thousands of APIs available.
+        However, I ultimately chose Python for its speed, ease of use, and the number of libraries
+        available, as well as the assurance that I would be able to complete my project.
+      </p>
+    `,
+    links: [
+      { label: "GitHub", url: "https://github.com/cegepmatane/projet-specialise-2022-JolanThomassin", primary: true }
+    ],
+    video: "https://www.youtube.com/embed/hx1Gz6u4Ey4", 
+    videoThumb: "../assets/img/deep-min.png",
+    gallery: [
+      "../assets/img/ChatBot-01.png",
+      "../assets/img/ChatBot-02.png",
+      "../assets/img/ChatBot-03.png"
+    ]
+  },
+
+  "roborave": {
+    title: "Robotics Contest RoboRAVE",
+    subtitle: "Issued by: RoboRAVE International",
+    date: "2019-05-30",
+    dateDisplay: "May 2019",
+    tags: ["Contest", "Robotics", "C++"],
+    desc: `
+      <h1>1st Place in the Robotics Competition: 3rd RoboRAVE</h1>
+
+      <p><strong>Issued by:</strong> RoboRAVE International &middot; May 2019</p>
+      <p><strong>Associated with:</strong> Lycée Condorcet</p>
+
+      <h2>2019 &ndash; 3rd RoboRAVE France, Saint-Priest</h2>
+      <ul>
+        <li>Designed and built a robot capable of following a line and transporting balls.</li>
+        <li>Won first place in the Line Following challenge.</li>
+        <li>Interviewed several people working in the field of robotics.</li>
+        <li>Conducted an interview in English with the co-creator of the international RoboRAVE challenge, Russ Fisher-Ives.</li>
+        <li>Mentored younger participants in the competition.</li>
+      </ul>
+
+      <h2>Participants</h2>
+      <ul>
+        <li>4 countries</li>
+        <li>200 students</li>
+        <li>22 parents and teachers</li>
+        <li>3 industrial companies</li>
+        <li>1 geology research laboratory</li>
+      </ul>
+    `,
+    links: [
+      { label: "Interview Link", url: "https://audioblog.arteradio.com/blog/126445/podcast/137301/robo-rave-interviews-des-concurrents"},
+      { label: "LinkedIn of the Event Co-Creator", url: "https://audioblog.arteradio.com/blog/126445/podcast/137301/robo-rave-interviews-des-concurrents"}
+    ],
+    gallery: [
+      "../assets/img/Roborave-01.jpg",
+      "../assets/img/Roborave-02.jpg",
+      "../assets/img/Roborave-03.jpg"
+    ]
+  },
+
+  "kurikku": {
+    title: "Kurikku Nanoko",
+    subtitle: "Clicker game",
+    date: "2019-05-30",
+    dateDisplay: "May 2019",
+    tags: ["Video Game", "Clicker / Incremental", "Only Python"],
+    desc: `
+      Kurikku Nanoko puts you in the shoes of a photographer in this revolutionary clicker game! Your goal? Make money so you can make even more money!
+      <br><br>
+      Open cosmetic crates, buy fans, and go to war in this amazing game developed by JolanCORP.
+      <br><br>
+      Originally created as part of a school project, I continued adding new features to it in my free time.
+    `,
+    links: [
+      { label: "GitHub Link", url: "https://github.com/JolanThomassin/Kurikku_nanoko", primary: true }
+    ],
+    gallery: [
+      "../assets/img/Kurikku-01.png","../assets/img/Kurikku-03.png","../assets/img/Kurikku-04.png","../assets/img/Kurikku-05.png",
+    ]
+  },
+
+  "cocktail": {
+    title: "Cokctail Machine",
+    subtitle: "Automatic Cocktail Making",
+    date: "2022-05-30",
+    dateDisplay: "May 2022",
+    tags: ["Machine", "Recycle"],
+    desc: `
+      During my internship at the Cégep de Matane FabLab, my team and I spent two weeks creating a cocktail machine. All the parts came from recycled components taken from older projects, except for the Arduino board.
+      <br><br>
+      Using a joystick and an LED screen, you can select cocktails or create your own by choosing the amount of each liquid for every drink. The beverages themselves can be changed in the tank located at the back.
+    `,
+    links: [
+      { label: "GitHub Link", url: "https://github.com/MoOaAaa/StageFabLab/tree/main/Machine%20a%20cocktail", primary: true }
+    ],
+    gallery: [
+      "../assets/img/cocktailUn.jpg","../assets/img/cocktailDeux.jpg","../assets/img/cocktailTrois.jpg"
+    ]
+  },
+
+  "pocket": {
+    title: "Pocket Platoons",
+    subtitle: "Build your army, choose your cards wisely, and survive the waves.",
+    date: "2026-01-30",
+    dateDisplay: "January 2026",
+    tags: ["Video Game", "Roguelike", "Deckbuilding"],
+    desc: `
+      <h1>Build Your Army, Choose Your Cards Wisely, and Survive the Waves</h1>
+
+      <p>
+        In this roguelike strategy game, your goal is to clear 2 levels, each divided into
+        3 rounds filled with increasingly dangerous enemy waves. Every battle is a test of
+        preparation, strategy, and adaptability.
+      </p>
+
+      <p>
+        To achieve victory, you’ll need to create a powerful army by recruiting units with
+        different rarities and unique abilities, then enhance them using a variety of cards
+        and buffs.
+      </p>
+
+      <p>
+        After each fight, you earn gold, which can be spent in the Shop before the next battle.
+        Use it to strengthen your army, unlock new units, and prepare for what’s coming next.
+      </p>
+
+      <h2>Cards &amp; Progression</h2>
+      <p><strong>Tarot Cards</strong> grant permanent boosts that last for the entire run.</p>
+      <p><strong>Buff Cards</strong> provide powerful effects to help you during battles.</p>
+
+      <p>Cards and units come in different rarities:</p>
+      <ul>
+        <li>Common</li>
+        <li>Rare</li>
+        <li>Epic</li>
+        <li>Legendary</li>
+      </ul>
+
+      <p>
+        Higher rarities usually mean stronger effects. Increasing your Luck improves your
+        chances of finding better cards and units. Luck can be gained through Tarot and Buff Cards.
+      </p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li>Roguelike progression with permanent and temporary upgrades</li>
+        <li>Army-building with strategic unit choices</li>
+        <li>Card-based buffs and synergies</li>
+        <li>Multiple enemy waves and escalating difficulty</li>
+        <li>Replayable runs with different builds each time</li>
+      </ul>
+
+      <p>
+        Every run is different. Adapt your strategy, build the strongest army you can,
+        and see how far you can go.
+      </p>
+    `,
+    links: [
+      { label: "Itch.io", url: "https://jolanam.itch.io/pocket-platoons", primary: true }
+    ],
+    gallery: [
+      "../assets/img/PocketPlatoon-01.png","../assets/img/PocketPlatoon-02.png","../assets/img/PocketPlatoon-03.png","../assets/img/PocketPlatoon-04.png"
+    ]
+  },
+    
+};
+
+  function byId(id){ return document.getElementById(id); }
+  const params = new URLSearchParams(location.search);
+  const slug = params.get("slug");
+  const d = DATA[slug] || Object.values(DATA)[0];
+
+  // Populate textual info
+  document.getElementById('crumb').textContent = " / " + d.title;
+  byId('title').textContent = d.title + (d.subtitle ? " — " + d.subtitle : "");
+
+  // Ajout de la date dans la section Meta ou Desc
+  if (d.dateDisplay) {
+    const year = d.date.split('-')[0];
+    
+    const tagsElem = byId('tags');
+    
+    tagsElem.setAttribute('data-date', year); 
+    
+    const dateHtml = `<span class="tag date-tag">${d.dateDisplay}</span>`;
+    tagsElem.innerHTML = dateHtml + (d.tags||[]).map(t => `<span class="tag">${t}</span>`).join("");
+  }
+  byId('desc').innerHTML = d.desc || "";
+
+  const ctaContainer = byId('ctaContainer');
+  ctaContainer.innerHTML = ""; // On vide le conteneur au cas où
+
+  if (d.links && Array.isArray(d.links)) {
+    d.links.forEach(link => {
+      // Création de l'élément <a>
+      const btn = document.createElement('a');
+      btn.href = link.url || '#';
+      btn.textContent = link.label || 'See Project';
+      btn.className = 'button'; // Classe de base
+      
+      // Si c'est marqué comme primary, on ajoute la classe CSS correspondante
+      if (link.primary) {
+        btn.classList.add('primary');
+      }
+      
+      btn.target = "_blank";
+      btn.rel = "noopener";
+      
+      // On l'ajoute au conteneur
+      ctaContainer.appendChild(btn);
+    });
+  }
+
+  // Build media list (video first if present)
+
+  // Normalize video URLs to privacy-friendly embed URLs
+  function toEmbed(url){
+    if(!url) return url;
+    try{
+      // YouTube: accept watch?v=, youtu.be/ID, or embed/ID (strip params like ?si=)
+      const yt = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+      if(yt){
+        const id = yt[1];
+        return `https://www.youtube.com/embed/${id}`;
+      }
+      // Vimeo
+      const vm = url.match(/vimeo\.com\/(?:video\/)?(\d{6,})/);
+      if(vm){
+        const id = vm[1];
+        return `https://player.vimeo.com/video/${id}`;
+      }
+    }catch(e){}
+    return url;
+  }
+const mediaList = [];
+if (d.videoEmbed) mediaList.push({type:'embed', src: d.videoEmbed});
+if (d.video)      mediaList.push({type:'video',  src: d.video});
+(d.gallery || []).forEach(g => mediaList.push({type:'image', src: g}));
+
+
+  const viewer = byId('viewer');
+  function showImage(src){
+    viewer.classList.add('is-image');
+    viewer.innerHTML = '<a class="open" id="openFull" href="#">Open</a>';
+    viewer.style.backgroundImage = (src.startsWith('url(')||src.startsWith('linear')||src.startsWith('radial'))
+      ? src : `url(${src})`;
+    document.getElementById('openFull').onclick = (e)=>{ e.preventDefault(); openLightbox({type:'image', src}); };
+  }
+  function showEmbed(html){
+  viewer.classList.remove('is-image');
+  viewer.style.backgroundImage = 'none';
+  viewer.innerHTML = html;   // insère l'iframe tel quel
+}
+
+  function showVideo(src){
+    viewer.classList.remove('is-image');
+    viewer.style.backgroundImage = 'none';
+    // YouTube/Vimeo iframe or direct video
+    if (/youtube\.com|youtu\.be|vimeo\.com/.test(src)) {
+      viewer.innerHTML = `<iframe src="${toEmbed(src)}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    } else {
+      viewer.innerHTML = `<video src="${src}" controls playsinline></video>`;
+    }
+  }
+
+  // initial media
+ if (mediaList.length) {
+  const first = mediaList[0];
+  if (first.type === 'embed')      showEmbed(first.src);
+  else if (first.type === 'video') showVideo(first.src);
+  else                             showImage(first.src);
+}
+
+
+  // thumbnails
+  const thumbs = byId('thumbs');
+  thumbs.innerHTML = mediaList.map(m => {
+    let style = '';
+    if (m.type === 'image') {
+      style = `style="background-image:${ (m.src.startsWith('url(')||m.src.startsWith('linear')||m.src.startsWith('radial')) ? m.src : 'url('+m.src+')' }"`;
+    } else if (m.type === 'video' && d.videoThumb) {
+      // Si c'est une vidéo ET qu'une image de vignette a été définie pour le projet, on l'utilise
+      style = `style="background-image: url(${d.videoThumb}); background-size: cover; background-position: center;"`;
+    }
+    return `<button class="thumb ${m.type==='video'?'is-video':''}" ${style}></button>`;
+  }).join("");
+  Array.from(thumbs.children).forEach((btn, i) => {
+    const m = mediaList[i];
+    btn.addEventListener('click', () => {
+      if (m.type === 'embed')       showEmbed(m.src);
+      else if (m.type === 'video')  showVideo(m.src);
+      else                          showImage(m.src);
+    });
+  });
+
+
+  // Lightbox
+  const lb = byId('lightbox'), frame = byId('lightboxFrame'), close = byId('closeLightbox');
+  function openLightbox(m){
+    lb.classList.add('is-open');
+    frame.innerHTML = m.type==='video'
+      ? ( /youtube\.com|youtu\.be|vimeo\.com/.test(m.src)
+          ? `<iframe class="frame" src="${toEmbed(m.src)}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+          : `<video class="frame" src="${m.src}" controls autoplay playsinline></video>` )
+      : `<img class="frame" src="${m.src.replace(/^url\(|\)$/g,'')}" alt="">`;
+  }
+  close.onclick = ()=> lb.classList.remove('is-open');
+  lb.addEventListener('click',(e)=>{ if(e.target===lb) lb.classList.remove('is-open'); });
+  </script>
+</body>
+</html>
