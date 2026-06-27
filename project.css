@@ -185,3 +185,53 @@ body {
 }
 
 @media (max-width: 900px) { .gallery { grid-template-columns: 1fr; } }
+
+
+/* ================= RESPONSIVE FIXES ================= */
+html { min-height: 100%; }
+body { min-width: 320px; overflow-x: hidden; }
+img, video, iframe { max-width: 100%; }
+
+@media (max-width: 760px) {
+  .header {
+    position: sticky;
+    flex-wrap: wrap;
+    padding: 10px 12px;
+  }
+
+  .wrap {
+    margin: 14px auto 56px;
+    padding: 0 12px;
+    gap: 18px;
+  }
+
+  .viewer {
+    border-radius: 14px;
+  }
+
+  .thumbs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .thumb {
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .card {
+    padding: 20px 16px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .cta .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #title {
+    font-size: 21px;
+  }
+}
